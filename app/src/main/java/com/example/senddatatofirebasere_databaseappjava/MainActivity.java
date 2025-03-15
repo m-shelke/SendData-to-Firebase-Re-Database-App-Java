@@ -9,20 +9,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.badge.BadgeUtils;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText dataField1;
-    Button sendBtn;
-    TextView demoTv;
+    Button sendBtn,receiveBtn;
+    TextView idTv,getDataTv;
 
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
@@ -42,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
         dataField1 = findViewById(R.id.dataField);
         sendBtn = findViewById(R.id.sendBtn);
-        demoTv = findViewById(R.id.demoTv);
+        receiveBtn = findViewById(R.id.receiveBtn);
+        idTv = findViewById(R.id.idTv);
+        getDataTv = findViewById(R.id.getDataTv);
 
         databaseReference = firebaseDatabase.getReference("Data");
 
@@ -53,6 +61,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        receiveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getData();
+            }
+        });
     }
 
     public void sendData(){
@@ -63,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             String dataFieldText = dataField1.getText().toString();
             String id = databaseReference.push().getKey();
 
-            demoTv.setText(id);
+            idTv.setText(id);
 
             if (!TextUtils.isEmpty(dataFieldText)){
                 DataModel dataModel = new DataModel(id,dataFieldText);
@@ -74,8 +88,23 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+    }
 
+    public void getData(){
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                if (snapshot.exists()) {
+                 getDataTv.setText(Objects.requireNonNull(snapshot.getValue()).toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 }

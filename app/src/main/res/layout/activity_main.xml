@@ -37,17 +37,46 @@
         app:layout_constraintStart_toStartOf="@+id/dataField"
         app:layout_constraintTop_toBottomOf="@+id/dataField" />
 
+
+    <Button
+        android:id="@+id/receiveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Receive"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/sendBtn"
+        app:layout_constraintStart_toStartOf="@+id/sendBtn"
+        app:layout_constraintTop_toBottomOf="@+id/sendBtn" />
+
+
     <TextView
-        android:id="@+id/demoTv"
+        android:id="@+id/idTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Let See.."
+        android:layout_marginTop="12dp"
+        android:text="Let See ID of Firebase.."
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/receiveBtn" />
+
+    <TextView
+        android:id="@+id/getDataTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="get Data From Firebase.."
+        android:textAlignment="center"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sendBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/idTv" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
