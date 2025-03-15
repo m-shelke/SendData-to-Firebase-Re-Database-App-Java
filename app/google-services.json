@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "472759661199",
+    "project_id": "senddata-app-java-fdaf5",
+    "storage_bucket": "senddata-app-java-fdaf5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472759661199:android:7838c4ef15938fd1e536fa",
+        "android_client_info": {
+          "package_name": "com.example.senddatatofirebasere_databaseappjava"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_Qfqm3cMvB8yId3GtfrH8zXTkK0-u06k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
